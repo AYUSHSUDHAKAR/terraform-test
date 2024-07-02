@@ -9,6 +9,9 @@ steps:
           -backend-config="prefix=terraform/state"
         terraform apply -auto-approve
 
+options:
+  logging: CLOUD_LOGGING_ONLY
+
 substitutions:
   _STATE_BUCKET: dolphin-terraform-state
 timeout: "1200s"
