@@ -1,0 +1,14 @@
+steps:
+  - name: "hashicorp/terraform:light"
+    entrypoint: "sh"
+    args:
+      - "-c"
+      - |
+        terraform init \
+          -backend-config="bucket=dolphin-terraform-state" \
+          -backend-config="prefix=terraform/state"
+        terraform apply -auto-approve
+
+substitutions:
+  _STATE_BUCKET: dolphin-terraform-state
+timeout: "1200s"
